@@ -1,0 +1,1405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+  />
+
+  <meta
+    name="description"
+    content="Dog Life AI — a premium interactive virtual dog adventure."
+  />
+
+  <meta name="theme-color" content="#0b1020" />
+
+  <title>Dog Life AI — Virtual Dog Adventure</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <link rel="stylesheet" href="/style.css" />
+</head>
+
+<body>
+  <!-- =========================================================
+       APP SHELL
+  ========================================================== -->
+
+  <div id="app" class="app-shell">
+
+    <!-- Ambient background -->
+    <div class="ambient ambient-one"></div>
+    <div class="ambient ambient-two"></div>
+
+    <!-- =====================================================
+         TOP BAR
+    ====================================================== -->
+
+    <header class="topbar">
+
+      <button
+        class="brand"
+        id="brandButton"
+        type="button"
+        aria-label="Open Dog Life home"
+      >
+        <span class="brand-mark">🐾</span>
+
+        <span class="brand-copy">
+          <strong>Dog Life</strong>
+          <small>AI Adventure</small>
+        </span>
+      </button>
+
+      <div class="topbar-center">
+        <div class="streak-pill">
+          <span>🔥</span>
+          <strong id="topStreak">0</strong>
+          <span>day streak</span>
+        </div>
+      </div>
+
+      <div class="topbar-actions">
+
+        <button
+          id="soundButton"
+          class="icon-button"
+          type="button"
+          aria-label="Toggle sound"
+          title="Toggle sound"
+        >
+          🔊
+        </button>
+
+        <button
+          id="profileButton"
+          class="profile-button"
+          type="button"
+          aria-label="Open profile"
+        >
+          <span class="profile-avatar">🐶</span>
+
+          <span class="profile-copy">
+            <strong id="profileName">Player</strong>
+            <small>Explorer</small>
+          </span>
+        </button>
+
+      </div>
+    </header>
+
+
+    <!-- =====================================================
+         MAIN NAVIGATION
+    ====================================================== -->
+
+    <nav class="main-nav" aria-label="Main navigation">
+
+      <button
+        class="nav-item active"
+        data-screen="home"
+        type="button"
+      >
+        <span>🏠</span>
+        <strong>Home</strong>
+      </button>
+
+      <button
+        class="nav-item"
+        data-screen="adventure"
+        type="button"
+      >
+        <span>🗺️</span>
+        <strong>Adventure</strong>
+      </button>
+
+      <button
+        class="nav-item"
+        data-screen="journal"
+        type="button"
+      >
+        <span>📖</span>
+        <strong>Journal</strong>
+      </button>
+
+      <button
+        class="nav-item"
+        data-screen="collection"
+        type="button"
+      >
+        <span>🏆</span>
+        <strong>Collection</strong>
+      </button>
+
+      <button
+        class="nav-item"
+        data-screen="profile"
+        type="button"
+      >
+        <span>👤</span>
+        <strong>Profile</strong>
+      </button>
+
+    </nav>
+
+
+    <!-- =====================================================
+         MAIN CONTENT
+    ====================================================== -->
+
+    <main class="main-content">
+
+
+      <!-- ===================================================
+           HOME SCREEN
+      ==================================================== -->
+
+      <section
+        id="screen-home"
+        class="screen active"
+        data-screen-content="home"
+      >
+
+        <div class="hero-grid">
+
+          <div class="hero-copy">
+
+            <span class="eyebrow">
+              <span class="live-dot"></span>
+              YOUR DOG'S WORLD
+            </span>
+
+            <h1>
+              Every day is a
+              <span class="gradient-text">new adventure.</span>
+            </h1>
+
+            <p class="hero-description">
+              Explore, play, train and build an unforgettable bond
+              with your AI-powered virtual companion.
+            </p>
+
+            <div class="hero-actions">
+
+              <button
+                id="startAdventureButton"
+                class="primary-button large"
+                type="button"
+              >
+                <span>Start Adventure</span>
+                <span class="button-arrow">→</span>
+              </button>
+
+              <button
+                id="quickMissionButton"
+                class="secondary-button large"
+                type="button"
+              >
+                ✨ Quick Mission
+              </button>
+
+            </div>
+
+            <div class="hero-meta">
+
+              <div class="meta-item">
+                <span>🏅</span>
+                <div>
+                  <strong id="heroLevel">Level 1</strong>
+                  <small>Explorer</small>
+                </div>
+              </div>
+
+              <div class="meta-divider"></div>
+
+              <div class="meta-item">
+                <span>💛</span>
+                <div>
+                  <strong id="heroBond">0%</strong>
+                  <small>Bond</small>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <!-- DOG HERO CARD -->
+
+          <div class="hero-dog-card">
+
+            <div class="hero-card-glow"></div>
+
+            <div class="hero-card-top">
+
+              <span class="status-badge">
+                <span class="status-dot"></span>
+                Happy
+              </span>
+
+              <button
+                id="heroFavoriteButton"
+                class="round-action"
+                type="button"
+                aria-label="Favorite dog"
+              >
+                ♡
+              </button>
+
+            </div>
+
+            <div class="dog-stage">
+
+              <div class="cloud cloud-one"></div>
+              <div class="cloud cloud-two"></div>
+
+              <div class="dog-shadow"></div>
+
+              <div
+                id="heroDog"
+                class="hero-dog"
+                aria-label="Your virtual dog"
+              >
+                🐕
+              </div>
+
+              <div class="dog-sparkle sparkle-one">✦</div>
+              <div class="dog-sparkle sparkle-two">✧</div>
+              <div class="dog-sparkle sparkle-three">✦</div>
+
+            </div>
+
+            <div class="hero-dog-info">
+
+              <div>
+                <span class="mini-label">YOUR COMPANION</span>
+                <h2 id="heroDogName">Buddy</h2>
+              </div>
+
+              <button
+                id="changeDogButton"
+                class="text-button"
+                type="button"
+              >
+                Change dog →
+              </button>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <!-- QUICK STATS -->
+
+        <section class="section-block">
+
+          <div class="section-heading">
+
+            <div>
+              <span class="eyebrow">TODAY</span>
+              <h2>Your dog's wellbeing</h2>
+            </div>
+
+            <button
+              id="statsRefreshButton"
+              class="ghost-button"
+              type="button"
+            >
+              Refresh
+            </button>
+
+          </div>
+
+
+          <div class="stats-grid">
+
+            <article class="stat-card">
+
+              <div class="stat-icon happiness-icon">😊</div>
+
+              <div class="stat-content">
+                <span>Happiness</span>
+
+                <strong id="happinessValue">82%</strong>
+
+                <div class="progress-track">
+                  <div
+                    id="happinessBar"
+                    class="progress-fill"
+                    style="width:82%"
+                  ></div>
+                </div>
+              </div>
+
+              <small id="happinessStatus">Very happy</small>
+
+            </article>
+
+
+            <article class="stat-card">
+
+              <div class="stat-icon energy-icon">⚡</div>
+
+              <div class="stat-content">
+                <span>Energy</span>
+
+                <strong id="energyValue">76%</strong>
+
+                <div class="progress-track">
+                  <div
+                    id="energyBar"
+                    class="progress-fill"
+                    style="width:76%"
+                  ></div>
+                </div>
+              </div>
+
+              <small id="energyStatus">Ready to play</small>
+
+            </article>
+
+
+            <article class="stat-card">
+
+              <div class="stat-icon bond-icon">💛</div>
+
+              <div class="stat-content">
+                <span>Bond</span>
+
+                <strong id="bondValue">0%</strong>
+
+                <div class="progress-track">
+                  <div
+                    id="bondBar"
+                    class="progress-fill"
+                    style="width:0%"
+                  ></div>
+                </div>
+              </div>
+
+              <small id="bondStatus">Getting started</small>
+
+            </article>
+
+
+            <article class="stat-card">
+
+              <div class="stat-icon xp-icon">✨</div>
+
+              <div class="stat-content">
+                <span>Experience</span>
+
+                <strong id="xpValue">0 XP</strong>
+
+                <div class="progress-track">
+                  <div
+                    id="xpBar"
+                    class="progress-fill"
+                    style="width:0%"
+                  ></div>
+                </div>
+              </div>
+
+              <small id="xpStatus">Next level soon</small>
+
+            </article>
+
+          </div>
+
+        </section>
+
+
+        <!-- DAILY GOALS -->
+
+        <section class="section-block">
+
+          <div class="section-heading">
+
+            <div>
+              <span class="eyebrow">DAILY ROUTINE</span>
+              <h2>Today's goals</h2>
+            </div>
+
+            <span
+              id="goalCounter"
+              class="counter-badge"
+            >
+              0 / 3
+            </span>
+
+          </div>
+
+
+          <div
+            id="dailyGoals"
+            class="goals-grid"
+          >
+
+            <article class="goal-card">
+
+              <div class="goal-check">✓</div>
+
+              <div>
+                <strong>Complete an adventure</strong>
+                <small>Explore the world with your dog.</small>
+              </div>
+
+              <span class="goal-reward">+50 XP</span>
+
+            </article>
+
+
+            <article class="goal-card">
+
+              <div class="goal-check">✓</div>
+
+              <div>
+                <strong>Collect 5 bones</strong>
+                <small>Search the map for hidden treasures.</small>
+              </div>
+
+              <span class="goal-reward">+30 XP</span>
+
+            </article>
+
+
+            <article class="goal-card">
+
+              <div class="goal-check">✓</div>
+
+              <div>
+                <strong>Build your bond</strong>
+                <small>Interact with your companion.</small>
+              </div>
+
+              <span class="goal-reward">+20 XP</span>
+
+            </article>
+
+          </div>
+
+        </section>
+
+
+        <!-- FEATURE CARDS -->
+
+        <section class="feature-grid">
+
+          <button
+            class="feature-card feature-adventure"
+            id="exploreFeature"
+            type="button"
+          >
+            <span class="feature-icon">🗺️</span>
+
+            <span class="feature-copy">
+              <small>EXPLORE</small>
+              <strong>Adventure Map</strong>
+              <span>Discover hidden places and surprises.</span>
+            </span>
+
+            <span class="feature-arrow">↗</span>
+          </button>
+
+
+          <button
+            class="feature-card feature-training"
+            id="trainingFeature"
+            type="button"
+          >
+            <span class="feature-icon">🎓</span>
+
+            <span class="feature-copy">
+              <small>TRAIN</small>
+              <strong>Smart Training</strong>
+              <span>Teach your dog new tricks.</span>
+            </span>
+
+            <span class="feature-arrow">↗</span>
+          </button>
+
+
+          <button
+            class="feature-card feature-journal"
+            id="journalFeature"
+            type="button"
+          >
+            <span class="feature-icon">📖</span>
+
+            <span class="feature-copy">
+              <small>MEMORIES</small>
+              <strong>Dog Journal</strong>
+              <span>Keep every adventure forever.</span>
+            </span>
+
+            <span class="feature-arrow">↗</span>
+          </button>
+
+        </section>
+
+      </section>
+
+
+      <!-- ===================================================
+           ADVENTURE SCREEN
+      ==================================================== -->
+
+      <section
+        id="screen-adventure"
+        class="screen"
+        data-screen-content="adventure"
+      >
+
+        <div class="screen-header">
+
+          <div>
+            <span class="eyebrow">LIVE ADVENTURE</span>
+            <h1>Explore the wild.</h1>
+            <p>Guide your dog through a living world.</p>
+          </div>
+
+          <div class="adventure-actions">
+
+            <button
+              id="pauseButton"
+              class="secondary-button"
+              type="button"
+            >
+              ⏸ Pause
+            </button>
+
+            <button
+              id="exitAdventureButton"
+              class="ghost-button"
+              type="button"
+            >
+              Exit
+            </button>
+
+          </div>
+
+        </div>
+
+
+        <!-- GAME HUD -->
+
+        <div class="game-hud">
+
+          <div class="hud-card">
+
+            <span>❤️ Happiness</span>
+
+            <strong id="gameHappiness">82</strong>
+
+            <div class="hud-bar">
+              <div
+                id="gameHappinessBar"
+                class="hud-fill"
+                style="width:82%"
+              ></div>
+            </div>
+
+          </div>
+
+
+          <div class="hud-card">
+
+            <span>⚡ Energy</span>
+
+            <strong id="gameEnergy">76</strong>
+
+            <div class="hud-bar">
+              <div
+                id="gameEnergyBar"
+                class="hud-fill"
+                style="width:76%"
+              ></div>
+            </div>
+
+          </div>
+
+
+          <div class="hud-score">
+
+            <span>🦴 Bones</span>
+            <strong id="boneScore">0</strong>
+
+          </div>
+
+
+          <div class="hud-score">
+
+            <span>⭐ XP</span>
+            <strong id="gameXp">0</strong>
+
+          </div>
+
+
+          <div class="hud-timer">
+
+            <span>TIME</span>
+            <strong id="gameTimer">90</strong>
+
+          </div>
+
+        </div>
+
+
+        <!-- MISSION PANEL -->
+
+        <div class="mission-panel">
+
+          <div class="mission-icon">✨</div>
+
+          <div class="mission-copy">
+
+            <span>AI MISSION DIRECTOR</span>
+
+            <strong id="missionText">
+              Sniff around and find the first hidden bone.
+            </strong>
+
+          </div>
+
+          <button
+            id="newMissionButton"
+            class="mission-button"
+            type="button"
+          >
+            New mission
+          </button>
+
+        </div>
+
+
+        <!-- CANVAS -->
+
+        <div class="game-wrapper">
+
+          <canvas
+            id="gameCanvas"
+            width="1200"
+            height="680"
+            aria-label="Dog Life adventure game"
+          ></canvas>
+
+          <div
+            id="gamePaused"
+            class="game-overlay hidden"
+          >
+
+            <div class="overlay-card">
+
+              <span class="overlay-icon">⏸</span>
+
+              <h2>Adventure paused</h2>
+
+              <p>Your dog is taking a little breather.</p>
+
+              <button
+                id="resumeButton"
+                class="primary-button"
+                type="button"
+              >
+                Resume adventure
+              </button>
+
+            </div>
+
+          </div>
+
+
+          <div
+            id="gameComplete"
+            class="game-overlay hidden"
+          >
+
+            <div class="overlay-card celebration-card">
+
+              <div class="celebration-icon">🏆</div>
+
+              <span class="eyebrow">ADVENTURE COMPLETE</span>
+
+              <h2 id="completeTitle">
+                What a good dog!
+              </h2>
+
+              <p id="completeMessage">
+                Your adventure has been saved to the journal.
+              </p>
+
+              <div class="result-stats">
+
+                <div>
+                  <strong id="resultBones">0</strong>
+                  <span>Bones</span>
+                </div>
+
+                <div>
+                  <strong id="resultXp">0</strong>
+                  <span>XP</span>
+                </div>
+
+                <div>
+                  <strong id="resultBond">+0%</strong>
+                  <span>Bond</span>
+                </div>
+
+              </div>
+
+              <div class="overlay-actions">
+
+                <button
+                  id="playAgainButton"
+                  class="primary-button"
+                  type="button"
+                >
+                  Play again
+                </button>
+
+                <button
+                  id="journalResultButton"
+                  class="secondary-button"
+                  type="button"
+                >
+                  View journal
+                </button>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <!-- CONTROLS -->
+
+        <div class="game-controls">
+
+          <div class="control-help">
+
+            <span>⌨️</span>
+
+            <p>
+              Move with
+              <strong>WASD</strong>
+              or
+              <strong>Arrow Keys</strong>
+            </p>
+
+          </div>
+
+
+          <div class="touch-controls">
+
+            <button
+              class="control-up"
+              data-control="up"
+              type="button"
+              aria-label="Move up"
+            >
+              ▲
+            </button>
+
+            <button
+              class="control-left"
+              data-control="left"
+              type="button"
+              aria-label="Move left"
+            >
+              ◀
+            </button>
+
+            <button
+              class="control-down"
+              data-control="down"
+              type="button"
+              aria-label="Move down"
+            >
+              ▼
+            </button>
+
+            <button
+              class="control-right"
+              data-control="right"
+              type="button"
+              aria-label="Move right"
+            >
+              ▶
+            </button>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- ===================================================
+           JOURNAL SCREEN
+      ==================================================== -->
+
+      <section
+        id="screen-journal"
+        class="screen"
+        data-screen-content="journal"
+      >
+
+        <div class="screen-header">
+
+          <div>
+            <span class="eyebrow">YOUR MEMORIES</span>
+            <h1>Dog Journal</h1>
+            <p>Every adventure becomes a memory.</p>
+          </div>
+
+          <div class="journal-count">
+            <strong id="journalCount">0</strong>
+            <span>adventures</span>
+          </div>
+
+        </div>
+
+
+        <div
+          id="journalEmpty"
+          class="empty-state"
+        >
+
+          <div class="empty-icon">📖</div>
+
+          <h2>Your story starts here.</h2>
+
+          <p>
+            Complete your first adventure and your dog's
+            memories will appear here.
+          </p>
+
+          <button
+            id="journalStartButton"
+            class="primary-button"
+            type="button"
+          >
+            Start first adventure
+          </button>
+
+        </div>
+
+
+        <div
+          id="journalList"
+          class="journal-list"
+        ></div>
+
+      </section>
+
+
+      <!-- ===================================================
+           COLLECTION SCREEN
+      ==================================================== -->
+
+      <section
+        id="screen-collection"
+        class="screen"
+        data-screen-content="collection"
+      >
+
+        <div class="screen-header">
+
+          <div>
+            <span class="eyebrow">REWARDS</span>
+            <h1>Collection</h1>
+            <p>Earn badges by living your best dog life.</p>
+          </div>
+
+          <div class="collection-score">
+
+            <strong id="collectionUnlocked">0</strong>
+
+            <span>/ 12 unlocked</span>
+
+          </div>
+
+        </div>
+
+
+        <div
+          id="badgeGrid"
+          class="badge-grid"
+        >
+
+          <article class="badge-card locked">
+            <span class="badge-art">🌱</span>
+            <strong>First Steps</strong>
+            <small>Complete your first adventure.</small>
+          </article>
+
+          <article class="badge-card locked">
+            <span class="badge-art">🦴</span>
+            <strong>Bone Hunter</strong>
+            <small>Collect 10 bones.</small>
+          </article>
+
+          <article class="badge-card locked">
+            <span class="badge-art">💛</span>
+            <strong>Best Friends</strong>
+            <small>Reach 50% bond.</small>
+          </article>
+
+          <article class="badge-card locked">
+            <span class="badge-art">🔥</span>
+            <strong>On a Roll</strong>
+            <small>Build a 3-day streak.</small>
+          </article>
+
+          <article class="badge-card locked">
+            <span class="badge-art">⭐</span>
+            <strong>Rising Star</strong>
+            <small>Reach level 5.</small>
+          </article>
+
+          <article class="badge-card locked">
+            <span class="badge-art">🏃</span>
+            <strong>Zoomies</strong>
+            <small>Finish an adventure with 70%+ energy.</small>
+          </article>
+
+          <article class="badge-card locked">
+            <span class="badge-art">🧭</span>
+            <strong>Explorer</strong>
+            <small>Complete 5 adventures.</small>
+          </article>
+
+          <article class="badge-card locked">
+            <span class="badge-art">🎯</span>
+            <strong>Mission Master</strong>
+            <small>Complete 10 missions.</small>
+          </article>
+
+          <article class="badge-card locked">
+            <span class="badge-art">👑</span>
+            <strong>Goodest Dog</strong>
+            <small>Reach 90% happiness.</small>
+          </article>
+
+          <article class="badge-card locked">
+            <span class="badge-art">🌟</span>
+            <strong>Legend</strong>
+            <small>Reach level 10.</small>
+          </article>
+
+          <article class="badge-card locked">
+            <span class="badge-art">💎</span>
+            <strong>Treasure Pup</strong>
+            <small>Collect 50 bones.</small>
+          </article>
+
+          <article class="badge-card locked">
+            <span class="badge-art">🐾</span>
+            <strong>Dog Life</strong>
+            <small>Unlock every other badge.</small>
+          </article>
+
+        </div>
+
+      </section>
+
+
+      <!-- ===================================================
+           PROFILE SCREEN
+      ==================================================== -->
+
+      <section
+        id="screen-profile"
+        class="screen"
+        data-screen-content="profile"
+      >
+
+        <div class="screen-header">
+
+          <div>
+            <span class="eyebrow">PLAYER PROFILE</span>
+            <h1>Your Dog Life</h1>
+            <p>Track your journey and customize your experience.</p>
+          </div>
+
+        </div>
+
+
+        <div class="profile-layout">
+
+
+          <div class="profile-card">
+
+            <div class="profile-visual">
+
+              <div
+                id="profileDogVisual"
+                class="profile-dog"
+              >
+                🐕
+              </div>
+
+            </div>
+
+            <div class="profile-details">
+
+              <span class="mini-label">PLAYER</span>
+
+              <h2 id="profileDisplayName">
+                Player
+              </h2>
+
+              <p>
+                Adventure level
+                <strong id="profileLevel">1</strong>
+              </p>
+
+              <button
+                id="editProfileButton"
+                class="secondary-button"
+                type="button"
+              >
+                Edit profile
+              </button>
+
+            </div>
+
+          </div>
+
+
+          <div class="profile-stat-grid">
+
+            <div class="profile-stat">
+              <span>🏆</span>
+              <strong id="profileWins">0</strong>
+              <small>Adventures</small>
+            </div>
+
+            <div class="profile-stat">
+              <span>🦴</span>
+              <strong id="profileBones">0</strong>
+              <small>Bones found</small>
+            </div>
+
+            <div class="profile-stat">
+              <span>⭐</span>
+              <strong id="profileXp">0</strong>
+              <small>Total XP</small>
+            </div>
+
+            <div class="profile-stat">
+              <span>🔥</span>
+              <strong id="profileStreak">0</strong>
+              <small>Best streak</small>
+            </div>
+
+          </div>
+
+
+          <div class="settings-card">
+
+            <div class="settings-heading">
+
+              <div>
+                <span class="eyebrow">PREFERENCES</span>
+                <h2>Settings</h2>
+              </div>
+
+            </div>
+
+
+            <label class="setting-row">
+
+              <span>
+                <strong>Sound effects</strong>
+                <small>Play interface and adventure sounds.</small>
+              </span>
+
+              <input
+                id="soundToggle"
+                type="checkbox"
+                checked
+              />
+
+              <span class="toggle"></span>
+
+            </label>
+
+
+            <label class="setting-row">
+
+              <span>
+                <strong>Reduced motion</strong>
+                <small>Reduce interface animations.</small>
+              </span>
+
+              <input
+                id="motionToggle"
+                type="checkbox"
+              />
+
+              <span class="toggle"></span>
+
+            </label>
+
+
+            <button
+              id="resetProgressButton"
+              class="danger-button"
+              type="button"
+            >
+              Reset local progress
+            </button>
+
+          </div>
+
+        </div>
+
+      </section>
+
+    </main>
+
+
+    <!-- =====================================================
+         DOG SELECT MODAL
+    ====================================================== -->
+
+    <div
+      id="dogModal"
+      class="modal hidden"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="dogModalTitle"
+    >
+
+      <div class="modal-backdrop" data-close-modal></div>
+
+      <div class="modal-card">
+
+        <button
+          class="modal-close"
+          data-close-modal
+          type="button"
+          aria-label="Close"
+        >
+          ×
+        </button>
+
+        <span class="eyebrow">CHOOSE YOUR COMPANION</span>
+
+        <h2 id="dogModalTitle">
+          Who's joining the adventure?
+        </h2>
+
+        <p>
+          Every dog has a different personality and adventure style.
+        </p>
+
+
+        <div class="dog-selection-grid">
+
+          <button
+            class="dog-option selected"
+            data-dog="buddy"
+            type="button"
+          >
+
+            <span class="dog-option-art">🐕</span>
+
+            <span>
+              <strong>Buddy</strong>
+              <small>Playful & loyal</small>
+            </span>
+
+          </button>
+
+
+          <button
+            class="dog-option"
+            data-dog="luna"
+            type="button"
+          >
+
+            <span class="dog-option-art">🐩</span>
+
+            <span>
+              <strong>Luna</strong>
+              <small>Curious & clever</small>
+            </span>
+
+          </button>
+
+
+          <button
+            class="dog-option"
+            data-dog="max"
+            type="button"
+          >
+
+            <span class="dog-option-art">🐶</span>
+
+            <span>
+              <strong>Max</strong>
+              <small>Brave & energetic</small>
+            </span>
+
+          </button>
+
+
+          <button
+            class="dog-option"
+            data-dog="coco"
+            type="button"
+          >
+
+            <span class="dog-option-art">🦮</span>
+
+            <span>
+              <strong>Coco</strong>
+              <small>Gentle & friendly</small>
+            </span>
+
+          </button>
+
+        </div>
+
+
+        <button
+          id="confirmDogButton"
+          class="primary-button full"
+          type="button"
+        >
+          Choose companion
+        </button>
+
+      </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         PROFILE NAME MODAL
+    ====================================================== -->
+
+    <div
+      id="profileModal"
+      class="modal hidden"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="profileModalTitle"
+    >
+
+      <div class="modal-backdrop" data-close-modal></div>
+
+      <div class="modal-card small-modal">
+
+        <button
+          class="modal-close"
+          data-close-modal
+          type="button"
+          aria-label="Close"
+        >
+          ×
+        </button>
+
+        <span class="eyebrow">PROFILE</span>
+
+        <h2 id="profileModalTitle">
+          What's your name?
+        </h2>
+
+        <p>
+          Your name appears on your Dog Life profile.
+        </p>
+
+        <label class="input-label" for="nameInput">
+          Display name
+        </label>
+
+        <input
+          id="nameInput"
+          class="text-input"
+          type="text"
+          maxlength="30"
+          placeholder="Enter your name"
+          autocomplete="name"
+        />
+
+        <button
+          id="saveNameButton"
+          class="primary-button full"
+          type="button"
+        >
+          Save profile
+        </button>
+
+      </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         TOAST
+    ====================================================== -->
+
+    <div
+      id="toast"
+      class="toast"
+      role="status"
+      aria-live="polite"
+    >
+
+      <span id="toastIcon">✨</span>
+
+      <span id="toastMessage">
+        Welcome to Dog Life!
+      </span>
+
+    </div>
+
+
+    <!-- =====================================================
+         LOADING SCREEN
+    ====================================================== -->
+
+    <div
+      id="loadingScreen"
+      class="loading-screen"
+    >
+
+      <div class="loading-mark">🐾</div>
+
+      <h1>Dog Life</h1>
+
+      <p>Preparing your next adventure...</p>
+
+      <div class="loading-track">
+        <div class="loading-bar"></div>
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- =======================================================
+       APPLICATION SCRIPT
+  ======================================================== -->
+
+  <script src="/game.js" defer></script>
+
+</body>
+  </html>
